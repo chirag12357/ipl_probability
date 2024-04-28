@@ -32,15 +32,16 @@ def save_current_schedule():
             df = df.append({
                 "matchId": match["matchInfo"]["matchId"],
                 "startDate": match["matchInfo"]["startDate"],
-                "venue": match["matchInfo"]["venueInfo"],
+                "venue": match["matchInfo"]["venueInfo"]["ground"],
                 "team1": match["matchInfo"]["team1"]["teamSName"],
                 "team2": match["matchInfo"]["team2"]["teamSName"],
                 "state": match["matchInfo"]["state"],
                 "status": match["matchInfo"]["status"]
             }, ignore_index=True)
-            
+    
+    print(df.head(5))
     #save to sqlite
-    conn = sqlite3.connect("ipl.db")
+    conn = sqlite3.connect("ipl.sqlite3")
     df.to_sql("schedule", conn, if_exists="replace", index=False)
 
 save_current_schedule() 
