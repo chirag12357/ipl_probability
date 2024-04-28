@@ -2708,8 +2708,8 @@
                             "matchFormat": "T20",
                             "startDate": "1714312800000",
                             "endDate": "1714325400000",
-                            "state": "In Progress",
-                            "status": "Sunrisers Hyderabad opt to bowl",
+                            "state": "Complete",
+                            "status": "Chennai Super Kings won by 78 runs",
                             "team1": {
                                 "teamId": 58,
                                 "teamName": "Chennai Super Kings",
@@ -2737,9 +2737,17 @@
                             "team1Score": {
                                 "inngs1": {
                                     "inningsId": 1,
-                                    "runs": 59,
-                                    "wickets": 1,
-                                    "overs": 7.0
+                                    "runs": 212,
+                                    "wickets": 3,
+                                    "overs": 20.0
+                                }
+                            },
+                            "team2Score": {
+                                "inngs1": {
+                                    "inningsId": 2,
+                                    "runs": 134,
+                                    "wickets": 10,
+                                    "overs": 18.5
                                 }
                             }
                         }

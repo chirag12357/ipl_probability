@@ -4,21 +4,21 @@ import json
 import sys
 import pandas as pd
 
-def save_current_schedule():
+def get_schedule(live = False):
     url = "https://cricbuzz-cricket.p.rapidapi.com/series/v1/7607"
 
     headers = {
         "X-RapidAPI-Key": "4ef6785636mshe0a3eaa4ecbdabfp1d484ejsn2f28f8394762",
         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
     }
-
-    # response = requests.get(url, headers=headers).json()
-    #save the json to a file in readable format
-    # with open("data.json", "w") as f:
-    #     f.write(json.dumps(response, indent=4))
+    if live:
+        response = requests.get(url, headers=headers).json()
+        ##save the json to a file in readable format
+        with open("django_files/data/schedule.json", "w") as f:
+            f.write(json.dumps(response, indent=4))
 
     #read from data.json
-    with open("data.json", "r") as f:
+    with open("django_files/data/schedule.json", "r") as f:
         data = json.load(f)
 
     #initialize dataframe with only column names
@@ -39,14 +39,13 @@ def save_current_schedule():
                 "status": match["matchInfo"]["status"]
             }, ignore_index=True)
     
-    print(df.head(5))
     #save to sqlite
-    conn = sqlite3.connect("ipl.sqlite3")
+    conn = sqlite3.connect("django_files/data/ipl.sqlite3")
     df.to_sql("schedule", conn, if_exists="replace", index=False)
 
-save_current_schedule() 
+get_schedule(live = True) 
 
-
+# def get_table(live = False):
 
 
 
