@@ -22,7 +22,7 @@ def get_schedule(live = False):
         data = json.load(f)
 
     #initialize dataframe with only column names
-    df = pd.DataFrame(columns=["matchId", "startDate", "venue", "team1", "team2", "state", "status"])
+    schedule_df = pd.DataFrame(columns=["matchId", "startDate", "venue", "team1", "team2", "state", "status"])
     for day in data["matchDetails"]:
         if "matchDetailsMap" not in day:
             continue
@@ -41,11 +41,46 @@ def get_schedule(live = False):
     
     #save to sqlite
     conn = sqlite3.connect("django_files/data/ipl.sqlite3")
-    df.to_sql("schedule", conn, if_exists="replace", index=False)
+    schedule_df.to_sql("schedule", conn, if_exists="replace", index=False)
 
-get_schedule(live = True) 
+# get_schedule(live = True) 
 
-# def get_table(live = False):
+def get_table(live = False):
+    url = "https://cricbuzz-cricket.p.rapidapi.com/stats/v1/series/7607/points-table"
+
+    headers = {
+        "X-RapidAPI-Key": "4ef6785636mshe0a3eaa4ecbdabfp1d484ejsn2f28f8394762",
+        "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
+    }
+
+    if live:
+        response = requests.get(url, headers=headers).json()
+        ##save the json to a file in readable format
+        with open("django_files/data/table.json", "w") as f:
+            f.write(json.dumps(response, indent=4))
+
+    #read from data.json
+    with open("django_files/data/table.json", "r") as f:
+        data = json.load(f)
+
+    table_df = pd.DataFrame(columns=["teamId", "teamName", "matchesPlayed", "matchesWon", "matchesLost", "points", "netRunRate"])
+    for team in data["pointsTable"][0]["pointsTableInfo"]:
+        table_df = table_df.append({
+            "teamId": team["teamId"],
+            "teamName": team["teamName"],
+            "matchesPlayed": team["matchesPlayed"],
+            "matchesWon": team["matchesWon"],
+            "matchesLost": team["matchesLost"],
+            "points": team["points"],
+            "netRunRate": team["nrr"]
+        }, ignore_index=True)
+
+    print(table_df)
+
+    #save to sqlite
+    conn = sqlite3.connect("django_files/data/ipl.sqlite3")
+    table_df.to_sql("table", conn, if_exists="replace", index=False)
+get_table()
 
 
 
