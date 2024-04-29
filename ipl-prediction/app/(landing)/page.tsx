@@ -6,13 +6,18 @@ import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import PointsTable from "./_components/table";
+import { useEffect } from "react";
+
+import useStore from "@/store/store";
 
 export default function Home() {
+  //console log the response from the api which is hosted on localhost:9090
+
   return (
     <>
       <div className=" grainy-light h-full">
         <div className="relative overflow-hidden">
-          <div className="mx-auto max-w-7xl pb-24 pt-10 sm:grid lg:grid-cols-2 sm:pb-32 lg:gap-x-8 lg:px-8 lg:pt-32 lg:pb-52">
+          <div className="mx-auto max-w-7xl pb-24 pt-10 sm:grid auto-cols-max lg:grid-cols-2 sm:pb-32 lg:gap-x-8 lg:px-8 lg:pt-32 lg:pb-52">
             <div className="px-6 lg:px-0 lg:pt-4">
               <div className="mx-auto max-w-lg text-center sm:text-left flex flex-col items-center lg:items-start">
                 <h1
@@ -36,7 +41,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative max-w-2xl w-full text-left p-5 bg-slate-200 rounded-xl shadow-xl scale-75">
+            <div className="relative w-full text-left p-5 bg-slate-200 rounded-xl shadow-xl scale-75">
               <PointsTable />
             </div>
           </div>
