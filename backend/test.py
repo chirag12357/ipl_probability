@@ -5,10 +5,11 @@ import sys
 import pandas as pd
 import os
 from fastapi import FastAPI, APIRouter
+import uvicorn
 
 class IPL:
     def __init__(self):
-        self.conn = sqlite3.connect("data/ipl.sqlite3", check_same_thread=False)
+        self.conn = sqlite3.connect("backend/data/ipl.sqlite3", check_same_thread=False)
         self.cursor = self.conn.cursor()
         self.schedule_df = pd.DataFrame()
         self.table_df = pd.DataFrame()
@@ -37,11 +38,11 @@ class IPL:
         if live:
             response = requests.get(url, headers=headers).json()
             ##save the json to a file in readable format
-            with open("data/table.json", "w") as f:
+            with open("backend/data/table.json", "w") as f:
                 f.write(json.dumps(response, indent=4))
 
         #read from data.json
-        with open("data/table.json", "r") as f:
+        with open("backend/data/table.json", "r") as f:
             data = json.load(f)
 
         table_df = pd.DataFrame(columns=["teamId", "teamName", "matchesPlayed", "matchesWon", "matchesLost", "points", "netRunRate"])
@@ -71,11 +72,11 @@ class IPL:
         if live:
             response = requests.get(url, headers=headers).json()
             ##save the json to a file in readable format
-            with open("data/schedule.json", "w") as f:
+            with open("backend/data/schedule.json", "w") as f:
                 f.write(json.dumps(response, indent=4))
 
         #read from data.json
-        with open("data/schedule.json", "r") as f:
+        with open("backend/data/schedule.json", "r") as f:
             data = json.load(f)
 
         #initialize dataframe with only column names
@@ -99,7 +100,10 @@ class IPL:
         #save to sqlite
         schedule_df.to_sql("schedule", self.conn, if_exists="replace", index=False)
 
+
+if __name__ == "__main__":
+    ipl = IPL()
+    app = FastAPI()
+    app.include_router(ipl.router)
     
-ipl = IPL()
-app = FastAPI()
-app.include_router(ipl.router)
+    uvicorn.run(app, host="127.0.0.1", port=5000, log_level="info")
