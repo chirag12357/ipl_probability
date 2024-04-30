@@ -37,7 +37,7 @@ class IPL:
         teams = {}
         for team in self.table_df["teamName"]:
             teamInfo = self.table_df[self.table_df["teamName"] == team]
-            teams[list(teamInfo["teamName"])[0]] = {"teamId" : list(teamInfo["teamId"])[0], "matchesPlayed": list(teamInfo["matchesPlayed"])[0], "matchesWon": list(teamInfo["matchesWon"])[0], "matchesLost": list(teamInfo["matchesLost"])[0], "points": list(teamInfo["points"])[0], "netRunRate": list(teamInfo["netRunRate"])[0]} #, "form": list(teamInfo["form"])[0]
+            teams[list(teamInfo["teamName"])[0]] = {"teamId" : list(teamInfo["teamId"])[0], "teamFullName" : list(teamInfo["teamFullName"])[0], "matchesPlayed": list(teamInfo["matchesPlayed"])[0], "matchesWon": list(teamInfo["matchesWon"])[0], "matchesLost": list(teamInfo["matchesLost"])[0], "points": list(teamInfo["points"])[0], "netRunRate": list(teamInfo["netRunRate"])[0], "form": list(teamInfo["form"])[0]}
             self.teams_df = pd.DataFrame(teams)
         
         return self.teams_df.to_dict()
@@ -60,11 +60,12 @@ class IPL:
         with open("backend/data/table.json", "r") as f:
             data = json.load(f)
 
-        table_df = pd.DataFrame(columns=["teamId", "teamName", "matchesPlayed", "matchesWon", "matchesLost", "points", "netRunRate"])
+        table_df = pd.DataFrame(columns=["teamId", "teamName", "teamFullName", "matchesPlayed", "matchesWon", "matchesLost", "points", "netRunRate"])
         for team in data["pointsTable"][0]["pointsTableInfo"]:
             table_df = table_df._append({
                 "teamId": team["teamId"],
                 "teamName": team["teamName"],
+                "teamFullName": team["teamFullName"],
                 "matchesPlayed": team["matchesPlayed"],
                 "matchesWon": team["matchesWon"],
                 "matchesLost": team["matchesLost"],
