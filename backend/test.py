@@ -6,8 +6,7 @@ import pandas as pd
 import os
 from fastapi import FastAPI, APIRouter
 import uvicorn
-import ast
-
+from fastapi.middleware.cors import CORSMiddleware
 
 class IPL:
     def __init__(self):
@@ -27,12 +26,16 @@ class IPL:
         self.schedule_df = pd.read_sql(query, self.conn)
         return self.schedule_df
 
-    def load_table(self):
+    def load_table(self, live = False):
+        if live:
+            self.fetch_table(live)
         query = "SELECT * FROM points_table"
         self.table_df = pd.read_sql(query, self.conn)
         return self.table_df.to_json()
     
-    def load_teams(self):
+    def load_teams(self, live = False):
+        if live:
+            self.fetch_table(live)
         self.load_table()
         teams = {}
         for team in self.table_df["teamName"]:
@@ -119,7 +122,23 @@ class IPL:
 
 if __name__ == "__main__":
     ipl = IPL()
+
     app = FastAPI()
     app.include_router(ipl.router)
     
+    origins = [
+        "http://localhost.tiangolo.com",
+        "https://localhost.tiangolo.com",
+        "http://localhost",
+        "http://localhost:8080",
+    ]
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     uvicorn.run(app, host="127.0.0.1", port=5000, log_level="info")
