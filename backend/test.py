@@ -27,12 +27,16 @@ class IPL:
         self.schedule_df = pd.read_sql(query, self.conn)
         return self.schedule_df
 
-    def load_table(self):
+    def load_table(self, live = False):
+        if live:
+            self.fetch_table(live)
         query = "SELECT * FROM points_table"
         self.table_df = pd.read_sql(query, self.conn)
         return self.table_df.to_json()
     
-    def load_teams(self):
+    def load_teams(self, live = False):
+        if live:
+            self.fetch_table(live)
         self.load_table()
         teams = {}
         for team in self.table_df["teamName"]:
