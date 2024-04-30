@@ -6,7 +6,7 @@ import pandas as pd
 import os
 from fastapi import FastAPI, APIRouter
 import uvicorn
-
+import ast
 
 
 class IPL:
@@ -37,9 +37,9 @@ class IPL:
         teams = {}
         for team in self.table_df["teamName"]:
             teamInfo = self.table_df[self.table_df["teamName"] == team]
-            teams[list(teamInfo["teamName"])[0]] = {"teamId" : list(teamInfo["teamId"])[0], "matchesPlayed": list(teamInfo["matchesPlayed"])[0], "matchesWon": list(teamInfo["matchesWon"])[0], "matchesLost": list(teamInfo["matchesLost"])[0], "points": list(teamInfo["points"])[0], "netRunRate": list(teamInfo["netRunRate"])[0], "form": list(teamInfo["form"])[0]}
+            teams[list(teamInfo["teamName"])[0]] = {"teamId" : list(teamInfo["teamId"])[0], "matchesPlayed": list(teamInfo["matchesPlayed"])[0], "matchesWon": list(teamInfo["matchesWon"])[0], "matchesLost": list(teamInfo["matchesLost"])[0], "points": list(teamInfo["points"])[0], "netRunRate": list(teamInfo["netRunRate"])[0]} #, "form": list(teamInfo["form"])[0]
             self.teams_df = pd.DataFrame(teams)
-        print(self.teams_df)
+        
         return self.teams_df.to_json()
     
     def fetch_table(self, live = False):
@@ -121,5 +121,5 @@ if __name__ == "__main__":
     app = FastAPI()
     app.include_router(ipl.router)
     
-    print(ipl.load_teams())
+    # print(ast.literal_eval(ipl.load_teams())["RCB"])
     uvicorn.run(app, host="127.0.0.1", port=5000, log_level="info")
