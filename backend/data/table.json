@@ -175,11 +175,11 @@
                 {
                     "teamId": 63,
                     "teamName": "KKR",
-                    "matchesPlayed": 8,
-                    "matchesWon": 5,
+                    "matchesPlayed": 9,
+                    "matchesWon": 6,
                     "matchesLost": 3,
-                    "points": 10,
-                    "nrr": "+0.972",
+                    "points": 12,
+                    "nrr": "+1.096",
                     "teamFullName": "Kolkata Knight Riders",
                     "teamMatches": [
                         {
@@ -273,10 +273,11 @@
                         {
                             "opponent": "Delhi Capitals",
                             "startdt": "1714399200000",
+                            "result": "Won by 7 wkts",
                             "opponentSName": "DC",
                             "matchId": 91564,
                             "matchName": "47th Match",
-                            "winner": 1,
+                            "winner": 63,
                             "opponentId": 61,
                             "opponentImageId": 225644
                         },
@@ -332,11 +333,11 @@
                         }
                     ],
                     "form": [
-                        "L",
                         "W",
                         "L",
                         "W",
-                        "L"
+                        "L",
+                        "W"
                     ],
                     "teamImageId": 225646
                 },
@@ -850,11 +851,11 @@
                 {
                     "teamId": 61,
                     "teamName": "DC",
-                    "matchesPlayed": 10,
+                    "matchesPlayed": 11,
                     "matchesWon": 5,
-                    "matchesLost": 5,
+                    "matchesLost": 6,
                     "points": 10,
-                    "nrr": "-0.276",
+                    "nrr": "-0.442",
                     "teamFullName": "Delhi Capitals",
                     "teamMatches": [
                         {
@@ -970,10 +971,11 @@
                         {
                             "opponent": "Kolkata Knight Riders",
                             "startdt": "1714399200000",
+                            "result": "Loss by 7 wkts",
                             "opponentSName": "KKR",
                             "matchId": 91564,
                             "matchName": "47th Match",
-                            "winner": 1,
+                            "winner": 63,
                             "opponentId": 63,
                             "opponentImageId": 225646
                         },
@@ -1010,10 +1012,10 @@
                     ],
                     "form": [
                         "W",
-                        "W",
                         "L",
                         "W",
-                        "W"
+                        "W",
+                        "L"
                     ],
                     "teamImageId": 225644
                 },
