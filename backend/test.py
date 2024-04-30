@@ -40,7 +40,7 @@ class IPL:
             teams[list(teamInfo["teamName"])[0]] = {"teamId" : list(teamInfo["teamId"])[0], "matchesPlayed": list(teamInfo["matchesPlayed"])[0], "matchesWon": list(teamInfo["matchesWon"])[0], "matchesLost": list(teamInfo["matchesLost"])[0], "points": list(teamInfo["points"])[0], "netRunRate": list(teamInfo["netRunRate"])[0]} #, "form": list(teamInfo["form"])[0]
             self.teams_df = pd.DataFrame(teams)
         
-        return self.teams_df.to_json()
+        return self.teams_df.to_dict()
     
     def fetch_table(self, live = False):
         url = "https://cricbuzz-cricket.p.rapidapi.com/stats/v1/series/7607/points-table"
@@ -121,5 +121,4 @@ if __name__ == "__main__":
     app = FastAPI()
     app.include_router(ipl.router)
     
-    # print(ast.literal_eval(ipl.load_teams())["RCB"])
     uvicorn.run(app, host="127.0.0.1", port=5000, log_level="info")
