@@ -5,7 +5,7 @@ import Schedule from "../../public/schedule.json";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import PointsTable from "./_components/table";
+import PointsTable, { DefaultTable } from "./_components/table";
 import { useEffect } from "react";
 
 import useStore from "@/store/store";
@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <div className=" grainy-light h-full">
         <div className="relative overflow-hidden">
-          <div className="mx-auto max-w-7xl pb-24 pt-10 sm:grid auto-cols-max lg:grid-cols-2 sm:pb-32 lg:gap-x-8 lg:px-8 lg:pt-32 lg:pb-52">
+          <div className="mx-auto max-w-7xl pb-24 pt-10 sm:grid-cols-2 lg:grid-cols-2 sm:pb-32 lg:gap-x-8 lg:px-8 lg:pt-32 lg:pb-52">
             <div className="px-6 lg:px-0 lg:pt-4">
               <div className="mx-auto max-w-lg text-center sm:text-left flex flex-col items-center lg:items-start">
                 <h1
@@ -27,7 +27,7 @@ export default function Home() {
                 >
                   <span className="whitespace-nowrap">IPL Predictions</span>
                 </h1>
-                <p className="mt-8 text-lg lg:pr-10 text-center lg:text-left text-balance md:text-wrap flex items-center">
+                <p className="w-full max-w-prose flex justify-center mt-10 items-center">
                   Made to check if{" "}
                   <span className="mb-4 mx-1">
                     <img src="rcb.png" alt="logo" width={50} height={50} />
@@ -42,7 +42,8 @@ export default function Home() {
             </div>
 
             <div className="relative w-full text-left p-5 bg-slate-200 rounded-xl shadow-xl scale-75">
-              <PointsTable />
+              {/* <PointsTable /> */}
+              <DefaultTable />
             </div>
           </div>
           {/* <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" /> */}

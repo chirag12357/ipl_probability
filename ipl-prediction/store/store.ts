@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 
-type tableResponseType = {
+export type tableResponseType = {
 "teamId"?: number  | null,
 "teamName"?: string | null,
 "matchesPlayed"?: number | null,
@@ -20,8 +20,17 @@ type tableResponseType = {
 const useStore = create((set) => ({
     tableData: [] as tableResponseType[],
     fetchTableData: async () => {
-        const response = await axios.get("http://localhost:9090/points");
-        set({ tableData: response.data });
+        
+        // const response = await axios.get("http://localhost:9090/points");
+        
+        // set({ tableData: response.data });
+        try {
+            const response = await axios.get("http://localhost:9090/points");
+            set({ tableData: response.data });
+        } catch (error) {
+            console.error("Error fetching data: ", error);
+            set({ tableData: [] });
+        }
     },
     }));
 
