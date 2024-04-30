@@ -5,7 +5,10 @@ import Schedule from "../../public/schedule.json";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import PointsTable, { DefaultTable } from "./_components/table";
+import PointsTable, {
+  DefaultTable,
+  MainTable,
+} from "./_components/Table/table";
 import { useEffect } from "react";
 
 import useStore from "@/store/store";
@@ -43,7 +46,8 @@ export default function Home() {
 
             <div className="relative w-full text-left p-5 bg-slate-200 rounded-xl shadow-xl scale-75">
               {/* <PointsTable /> */}
-              <DefaultTable />
+              {/* <DefaultTable /> */}
+              <MainTable />
             </div>
           </div>
           {/* <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" /> */}

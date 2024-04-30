@@ -20,13 +20,14 @@ export type tableResponseType = {
 const useStore = create((set) => ({
     tableData: [] as tableResponseType[],
     fetchTableData: async () => {
-        
-        // const response = await axios.get("http://localhost:9090/points");
-        
-        // set({ tableData: response.data });
         try {
             const response = await axios.get("http://localhost:9090/points");
-            set({ tableData: response.data });
+            set({
+                tableData: response.data.map((team: tableResponseType) => ({
+                    ...team,
+                    nrr: Number(team.nrr),
+                })),
+            });
         } catch (error) {
             console.error("Error fetching data: ", error);
             set({ tableData: [] });

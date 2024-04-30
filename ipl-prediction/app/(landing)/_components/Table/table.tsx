@@ -11,12 +11,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import formIcon from "./formIcon";
+import formIcon from "../formIcon";
 
-import TeamData from "../../../components/team-list/teams.json";
+import { DataTable } from "./DataTable";
+import { columns } from "./columns";
+
+import TeamData from "../../../../components/team-list/teams.json";
 import useStore from "@/store/store";
 import { tableResponseType } from "@/store/store";
-import FormIcon from "./formIcon";
+import FormIcon from "../formIcon";
 
 const PointsTable = () => {
   const { fetchTableData, tableData } = useStore() as {
@@ -46,13 +49,14 @@ const PointsTable = () => {
           {tableData.map((team, idx) => (
             <TableRow className="" key={team.teamId}>
               <TableCell className="font-medium flex space-x-2 text-nowrap pr-10">
-                {/* <img
-                  src={team.logo}
+                {/* Map through Team Data and compare the full name and get the logo*/}
+                <img
+                  src={TeamData.find((t) => t.name === team.teamFullName)?.logo}
                   width={35}
                   height={35}
                   alt="logo"
                   className=""
-                />{" "} */}
+                />
                 <span className="flex items-center">{team.teamFullName}</span>
               </TableCell>
               <TableCell className=" font-semibold">
@@ -113,6 +117,21 @@ export const DefaultTable = () => {
         ))}
       </TableBody>
     </Table>
+  );
+};
+
+export const MainTable = () => {
+  const { fetchTableData, tableData } = useStore() as {
+    fetchTableData: () => void;
+    tableData: tableResponseType[];
+  };
+  useEffect(() => {
+    fetchTableData();
+  }, []);
+  return (
+    <div className="container mx-auto py-10">
+      <DataTable columns={columns} data={tableData} />
+    </div>
   );
 };
 
