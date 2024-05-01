@@ -2,10 +2,11 @@ import React from "react";
 import { CellContext, ColumnDef, flexRender } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
-import { tableResponseType } from "@/store/store";
+import { tableResponseType, TeamType } from "@/store/store";
 import { Button } from "@/components/ui/button";
 
 import FormIcon from "../formIcon";
+import { space } from "postcss/lib/list";
 
 export const columns: ColumnDef<tableResponseType>[] = [
   {
@@ -36,7 +37,7 @@ export const columns: ColumnDef<tableResponseType>[] = [
     header: "Lost",
   },
   {
-    accessorKey: "nrr",
+    accessorKey: "netRunRate",
     header: ({ column }) => {
       return (
         <Button
@@ -69,8 +70,11 @@ export const columns: ColumnDef<tableResponseType>[] = [
     accessorKey: "form",
     header: "Last 5",
     cell: ({ cell }) => {
-      // Use the FormIcon component here
-      return <FormIcon form={cell.getValue() as string[]} />;
+      // return <FormIcon form={cell.getValue() as string[]} />;
+      return (
+        // <span className="text-blue-500">{cell.getValue() as string[]}</span>
+        <FormIcon {...(cell.getValue() as string[])} />
+      );
     },
   },
 ];

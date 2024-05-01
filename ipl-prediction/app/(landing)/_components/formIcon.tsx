@@ -1,20 +1,22 @@
 import { CircleCheck, CircleX } from "lucide-react";
 import React from "react";
-type Props = {
+
+// ['L','W','W','W','W'] is the type of input props for the FormIcon component
+
+type formIconProps = {
   form: string[];
 };
-const FormIcon = (props: Props) => {
+
+const FormIcon = (props: string[]) => {
   return (
-    <div className="flex">
-      {props.form.map((form, idx) => (
-        <span key={idx}>
-          {form === "W" ? (
-            <CircleCheck className="text-green-500 " />
-          ) : (
-            <CircleX className="text-red-500 " />
-          )}
-        </span>
-      ))}
+    <div className="flex space-x-1">
+      {props.map((result, index) => {
+        if (result === "W") {
+          return <CircleCheck key={index} size={20} />;
+        } else {
+          return <CircleX key={index} size={20} />;
+        }
+      })}
     </div>
   );
 };

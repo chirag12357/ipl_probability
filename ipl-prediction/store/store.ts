@@ -10,30 +10,30 @@ export type tableResponseType = {
 "matchesWon"?: number | null,
 "matchesLost"?: number | null,
 "points"?: number | null,
-"nrr"?: number | string | null,
+"netRunRate"?: number | string | null,
 "teamFullName"?: string | null,
 "teamMatches"?: any[] | null,
 "form"?:string[] | null,
 "teamImageId"?: number | null,
 }
 
+export type TeamType = {
+    [key : string] : tableResponseType;
+}
+
+
 const useStore = create((set) => ({
-    tableData: [] as tableResponseType[],
+    tableData: {},
     fetchTableData: async () => {
         try {
-            const response = await axios.get("http://localhost:9090/points");
-            set({
-                tableData: response.data.map((team: tableResponseType) => ({
-                    ...team,
-                    nrr: Number(team.nrr),
-                })),
-            });
+            const response = await axios.get("http://localhost:5000/teams");
+            set({ tableData: response.data })
+
         } catch (error) {
-            console.error("Error fetching data: ", error);
-            set({ tableData: [] });
+            console.error(error);
         }
-    },
-    }));
+    }
+}));
 
 export default useStore;
 

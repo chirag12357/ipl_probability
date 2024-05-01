@@ -5,10 +5,7 @@ import Schedule from "../../public/schedule.json";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import PointsTable, {
-  DefaultTable,
-  MainTable,
-} from "./_components/Table/table";
+import { DefaultTable, MainTable } from "./_components/Table/table";
 import { useEffect } from "react";
 
 import useStore from "@/store/store";
