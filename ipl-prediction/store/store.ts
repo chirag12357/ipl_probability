@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { useEffect } from "react";
 import axios from "axios";
 
 
@@ -26,9 +25,9 @@ const useStore = create((set) => ({
     tableData: {},
     fetchTableData: async () => {
         try {
-            const response = await axios.get("http://localhost:5000/teams");
+            const response = await axios.get("http://127.0.0.1:5000/teams");
             set({ tableData: response.data })
-
+            
         } catch (error) {
             console.error(error);
         }

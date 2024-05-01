@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { CellContext, ColumnDef, flexRender } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
@@ -6,12 +7,26 @@ import { tableResponseType, TeamType } from "@/store/store";
 import { Button } from "@/components/ui/button";
 
 import FormIcon from "../formIcon";
-import { space } from "postcss/lib/list";
+import TeamList from "../../../../components/team-list/teams.json";
 
 export const columns: ColumnDef<tableResponseType>[] = [
   {
     accessorKey: "teamFullName",
     header: "Team",
+    cell: ({ cell }) => {
+      return (
+        <div className="flex space-x-2 items-center">
+          <img
+            src={TeamList.find((t) => t.name === cell.getValue())?.logo}
+            width={35}
+            height={35}
+            alt="logo"
+            className=""
+          />
+          <span>{cell.getValue() as string}</span>
+        </div>
+      );
+    },
   },
   {
     accessorKey: "matchesPlayed",
@@ -70,11 +85,7 @@ export const columns: ColumnDef<tableResponseType>[] = [
     accessorKey: "form",
     header: "Last 5",
     cell: ({ cell }) => {
-      // return <FormIcon form={cell.getValue() as string[]} />;
-      return (
-        // <span className="text-blue-500">{cell.getValue() as string[]}</span>
-        <FormIcon {...(cell.getValue() as string[])} />
-      );
+      return <FormIcon form={cell.getValue() as string} />;
     },
   },
 ];
