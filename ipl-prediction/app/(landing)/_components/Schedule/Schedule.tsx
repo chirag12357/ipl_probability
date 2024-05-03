@@ -51,7 +51,7 @@ const ScheduleTable = () => {
           </span>{" "}
           {matchInfo?.startDate && (
             <span className="text-2xl font-semibold">
-              {convertUndefined(matchInfo?.startDate)}
+              {/* {convertUndefined(matchInfo?.startDate)} */}
             </span>
           )}
         </div>
