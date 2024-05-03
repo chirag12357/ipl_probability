@@ -7,6 +7,8 @@ import os
 from fastapi import FastAPI, APIRouter
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
+from datetime import datetime
+import pytz
 
 class IPL:
     def __init__(self):
@@ -21,10 +23,34 @@ class IPL:
         self.router.add_api_route("/schedule", self.load_schedule, methods=["GET"])
         self.router.add_api_route("/teams", self.load_teams, methods=["GET"])
 
-    def load_schedule(self):
-        query = "SELECT * FROM schedule"
-        self.schedule_df = pd.read_sql(query, self.conn)
-        return self.schedule_df
+    def load_schedule(self, date = None):
+        if date == None:
+            date = datetime.now().strftime("%Y-%m-%d")
+            query = f"SELECT * FROM schedule WHERE startDate LIKE '{date}%'"
+            self.schedule_df = pd.read_sql(query, self.conn)
+            schedule_dict = {}
+            for row in self.schedule_df.iterrows():
+                row = row[1]
+                schedule_dict[row["matchId"]] = {"startDate": row["startDate"], "venue": row["venue"], "team1": row["team1"], "team2": row["team2"], "state": row["state"], "status": row["status"]}
+            return schedule_dict
+        
+        elif date == "all":
+            query = "SELECT * FROM schedule"
+            self.schedule_df = pd.read_sql(query, self.conn)
+            schedule_dict = {}
+            for row in self.schedule_df.iterrows():
+                row = row[1]
+                schedule_dict[row["matchId"]] = {"startDate": row["startDate"], "venue": row["venue"], "team1": row["team1"], "team2": row["team2"], "state": row["state"], "status": row["status"]}
+            return schedule_dict
+        
+        else:
+            query = f"SELECT * FROM schedule WHERE startDate LIKE '{date}%'"
+            self.schedule_df = pd.read_sql(query, self.conn)
+            schedule_dict = {}
+            for row in self.schedule_df.iterrows():
+                row = row[1]
+                schedule_dict[row["matchId"]] = {"startDate": row["startDate"], "venue": row["venue"], "team1": row["team1"], "team2": row["team2"], "state": row["state"], "status": row["status"]}
+            return schedule_dict
 
     def load_table(self, live = False):
         if live:
@@ -107,9 +133,9 @@ class IPL:
             date = day["matchDetailsMap"]["key"]
             for match in day["matchDetailsMap"]["match"]:
                 #insert in to df
-                schedule_df = schedule_df.append({
+                schedule_df = schedule_df._append({
                     "matchId": match["matchInfo"]["matchId"],
-                    "startDate": match["matchInfo"]["startDate"],
+                    "startDate": datetime.fromtimestamp(int(match["matchInfo"]["startDate"][:-3]), pytz.timezone("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M"),
                     "venue": match["matchInfo"]["venueInfo"]["ground"],
                     "team1": match["matchInfo"]["team1"]["teamSName"],
                     "team2": match["matchInfo"]["team2"]["teamSName"],
@@ -122,7 +148,7 @@ class IPL:
 
 if __name__ == "__main__":
     ipl = IPL()
-
+    
     app = FastAPI()
     app.include_router(ipl.router)
     
