@@ -148,7 +148,7 @@ class IPL:
 
 if __name__ == "__main__":
     ipl = IPL()
-    ipl.fetch_schedule(live=True)
+    ipl.fetch_table(live=True)
     app = FastAPI()
     app.include_router(ipl.router)
     
