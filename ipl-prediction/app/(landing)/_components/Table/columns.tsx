@@ -7,7 +7,7 @@ import { tableResponseType, TeamType } from "@/store/store";
 import { Button } from "@/components/ui/button";
 
 import FormIcon from "../formIcon";
-import TeamList from "../../../../components/team-list/teams.json";
+import TeamList from "@/data/teams.json";
 
 export const columns: ColumnDef<tableResponseType>[] = [
   {

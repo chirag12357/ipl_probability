@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import { IconProps } from "@radix-ui/react-icons/dist/types";
 import React, { forwardRef, useRef } from "react";
-import TeamList from "@/components/team-list/teams.json";
+import TeamList from "@/data/teams.json";
 import Ripple from "@/components/magicui/ripple";
 
 const Circle = forwardRef<

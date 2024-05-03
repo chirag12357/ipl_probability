@@ -16,7 +16,7 @@ import formIcon from "../formIcon";
 import { DataTable } from "./DataTable";
 import { columns } from "./columns";
 
-import TeamData from "../../../../components/team-list/teams.json";
+import TeamData from "@/data/teams.json";
 import useStore from "@/store/store";
 import { tableResponseType, TeamType } from "@/store/store";
 import FormIcon from "../formIcon";
@@ -90,7 +90,7 @@ export const DefaultTable = () => {
     fetchTableData();
   }, []);
 
-  console.log(tableData);
+  // console.log(tableData);
   return (
     <Table>
       {/* <TableCaption>Current Standings</TableCaption> */}
@@ -139,7 +139,7 @@ export const MainTable = () => {
   }, []);
 
   const data = Object.values(tableData);
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="container mx-auto py-10">

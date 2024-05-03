@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import Schedule from "../../public/schedule.json";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -12,6 +11,7 @@ import useStore from "@/store/store";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import Ripple from "@/components/magicui/ripple";
 import { AnimatedBeamDemo } from "./_components/Beams/beams";
+import ScheduleTable from "./_components/Schedule/Schedule";
 import RetroGrid from "@/components/magicui/retro-grid";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
@@ -46,6 +46,7 @@ export default function Home() {
                   .
                 </p>
                 <AnimatedBeamDemo />
+                <ScheduleTable />
               </div>
             </div>
 
