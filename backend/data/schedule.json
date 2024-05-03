@@ -2769,19 +2769,19 @@
                             "matchFormat": "T20",
                             "startDate": "1714399200000",
                             "endDate": "1714411800000",
-                            "state": "Preview",
-                            "status": "Match starts at Apr 29, 14:00 GMT",
+                            "state": "Complete",
+                            "status": "Kolkata Knight Riders won by 7 wkts",
                             "team1": {
-                                "teamId": 63,
-                                "teamName": "Kolkata Knight Riders",
-                                "teamSName": "KKR",
-                                "imageId": 225646
-                            },
-                            "team2": {
                                 "teamId": 61,
                                 "teamName": "Delhi Capitals",
                                 "teamSName": "DC",
                                 "imageId": 225644
+                            },
+                            "team2": {
+                                "teamId": 63,
+                                "teamName": "Kolkata Knight Riders",
+                                "teamSName": "KKR",
+                                "imageId": 225646
                             },
                             "venueInfo": {
                                 "id": 31,
@@ -2789,9 +2789,28 @@
                                 "city": "Kolkata",
                                 "timezone": "+05:30"
                             },
+                            "currBatTeamId": 63,
                             "seriesStartDt": "1711065600000",
                             "seriesEndDt": "1716854400000",
                             "isTimeAnnounced": true
+                        },
+                        "matchScore": {
+                            "team1Score": {
+                                "inngs1": {
+                                    "inningsId": 1,
+                                    "runs": 153,
+                                    "wickets": 9,
+                                    "overs": 20.0
+                                }
+                            },
+                            "team2Score": {
+                                "inngs1": {
+                                    "inningsId": 2,
+                                    "runs": 157,
+                                    "wickets": 3,
+                                    "overs": 16.3
+                                }
+                            }
                         }
                     }
                 ],
@@ -2811,19 +2830,19 @@
                             "matchFormat": "T20",
                             "startDate": "1714485600000",
                             "endDate": "1714498200000",
-                            "state": "Upcoming",
-                            "status": "Match starts at Apr 30, 14:00 GMT",
+                            "state": "Complete",
+                            "status": "Lucknow Super Giants won by 4 wkts",
                             "team1": {
-                                "teamId": 966,
-                                "teamName": "Lucknow Super Giants",
-                                "teamSName": "LSG",
-                                "imageId": 389444
-                            },
-                            "team2": {
                                 "teamId": 62,
                                 "teamName": "Mumbai Indians",
                                 "teamSName": "MI",
                                 "imageId": 225645
+                            },
+                            "team2": {
+                                "teamId": 966,
+                                "teamName": "Lucknow Super Giants",
+                                "teamSName": "LSG",
+                                "imageId": 389444
                             },
                             "venueInfo": {
                                 "id": 485,
@@ -2831,9 +2850,28 @@
                                 "city": "Lucknow",
                                 "timezone": "+05:30"
                             },
+                            "currBatTeamId": 966,
                             "seriesStartDt": "1711065600000",
                             "seriesEndDt": "1716854400000",
                             "isTimeAnnounced": true
+                        },
+                        "matchScore": {
+                            "team1Score": {
+                                "inngs1": {
+                                    "inningsId": 1,
+                                    "runs": 144,
+                                    "wickets": 7,
+                                    "overs": 20.0
+                                }
+                            },
+                            "team2Score": {
+                                "inngs1": {
+                                    "inningsId": 2,
+                                    "runs": 145,
+                                    "wickets": 6,
+                                    "overs": 19.2
+                                }
+                            }
                         }
                     }
                 ],
@@ -2853,8 +2891,8 @@
                             "matchFormat": "T20",
                             "startDate": "1714572000000",
                             "endDate": "1714584600000",
-                            "state": "Upcoming",
-                            "status": "Match starts at May 01, 14:00 GMT",
+                            "state": "Complete",
+                            "status": "Punjab Kings won by 7 wkts",
                             "team1": {
                                 "teamId": 58,
                                 "teamName": "Chennai Super Kings",
@@ -2873,9 +2911,28 @@
                                 "city": "Chennai",
                                 "timezone": "+05:30"
                             },
+                            "currBatTeamId": 65,
                             "seriesStartDt": "1711065600000",
                             "seriesEndDt": "1716854400000",
                             "isTimeAnnounced": true
+                        },
+                        "matchScore": {
+                            "team1Score": {
+                                "inngs1": {
+                                    "inningsId": 1,
+                                    "runs": 162,
+                                    "wickets": 7,
+                                    "overs": 20.0
+                                }
+                            },
+                            "team2Score": {
+                                "inngs1": {
+                                    "inningsId": 2,
+                                    "runs": 163,
+                                    "wickets": 3,
+                                    "overs": 17.5
+                                }
+                            }
                         }
                     }
                 ],
@@ -2895,8 +2952,8 @@
                             "matchFormat": "T20",
                             "startDate": "1714658400000",
                             "endDate": "1714671000000",
-                            "state": "Upcoming",
-                            "status": "Match starts at May 02, 14:00 GMT",
+                            "state": "Complete",
+                            "status": "Sunrisers Hyderabad won by 1 run",
                             "team1": {
                                 "teamId": 255,
                                 "teamName": "Sunrisers Hyderabad",
@@ -2915,9 +2972,28 @@
                                 "city": "Hyderabad",
                                 "timezone": "+05:30"
                             },
+                            "currBatTeamId": 255,
                             "seriesStartDt": "1711065600000",
                             "seriesEndDt": "1716854400000",
                             "isTimeAnnounced": true
+                        },
+                        "matchScore": {
+                            "team1Score": {
+                                "inngs1": {
+                                    "inningsId": 1,
+                                    "runs": 201,
+                                    "wickets": 3,
+                                    "overs": 20.0
+                                }
+                            },
+                            "team2Score": {
+                                "inngs1": {
+                                    "inningsId": 2,
+                                    "runs": 200,
+                                    "wickets": 7,
+                                    "overs": 20.0
+                                }
+                            }
                         }
                     }
                 ],
@@ -2937,19 +3013,19 @@
                             "matchFormat": "T20",
                             "startDate": "1714744800000",
                             "endDate": "1714757400000",
-                            "state": "Upcoming",
-                            "status": "Match starts at May 03, 14:00 GMT",
+                            "state": "Complete",
+                            "status": "Kolkata Knight Riders won by 24 runs",
                             "team1": {
-                                "teamId": 62,
-                                "teamName": "Mumbai Indians",
-                                "teamSName": "MI",
-                                "imageId": 225645
-                            },
-                            "team2": {
                                 "teamId": 63,
                                 "teamName": "Kolkata Knight Riders",
                                 "teamSName": "KKR",
                                 "imageId": 225646
+                            },
+                            "team2": {
+                                "teamId": 62,
+                                "teamName": "Mumbai Indians",
+                                "teamSName": "MI",
+                                "imageId": 225645
                             },
                             "venueInfo": {
                                 "id": 81,
@@ -2957,9 +3033,28 @@
                                 "city": "Mumbai",
                                 "timezone": "+05:30"
                             },
+                            "currBatTeamId": 63,
                             "seriesStartDt": "1711065600000",
                             "seriesEndDt": "1716854400000",
                             "isTimeAnnounced": true
+                        },
+                        "matchScore": {
+                            "team1Score": {
+                                "inngs1": {
+                                    "inningsId": 1,
+                                    "runs": 169,
+                                    "wickets": 10,
+                                    "overs": 19.5
+                                }
+                            },
+                            "team2Score": {
+                                "inngs1": {
+                                    "inningsId": 2,
+                                    "runs": 145,
+                                    "wickets": 10,
+                                    "overs": 18.5
+                                }
+                            }
                         }
                     }
                 ],
@@ -2979,7 +3074,7 @@
                             "matchFormat": "T20",
                             "startDate": "1714831200000",
                             "endDate": "1714843800000",
-                            "state": "Upcoming",
+                            "state": "Preview",
                             "status": "Match starts at May 04, 14:00 GMT",
                             "team1": {
                                 "teamId": 59,
@@ -3909,7 +4004,7 @@
             }
         }
     ],
-    "landingPosition": 84,
+    "landingPosition": 94,
     "appIndex": {
         "seoTitle": "Indian Premier League 2024 live scores, schedule and results - Cricbuzz | Cricbuzz.com",
         "webURL": "www.cricbuzz.com/cricket-series/"
